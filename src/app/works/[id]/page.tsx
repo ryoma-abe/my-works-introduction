@@ -8,7 +8,7 @@ export default async function Work({
 }) {
   const { id } = await params;
   const work = await prisma.work.findUnique({
-    where: { id: parseInt(id) },
+    where: { id },
   });
 
   if (!work) {
