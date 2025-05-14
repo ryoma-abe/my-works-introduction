@@ -1,43 +1,27 @@
-import { PrismaClient, Prisma } from "../app/generated/prisma";
+import { PrismaClient, Prisma } from "../src/generated/prisma";
 
 const prisma = new PrismaClient();
 
-const userData: Prisma.UserCreateInput[] = [
+const userData: Prisma.WorkCreateInput[] = [
   {
-    name: "Alice",
-    email: "alice@prisma.io",
-    posts: {
-      create: [
-        {
-          title: "Join the Prisma Discord",
-          content: "https://pris.ly/discord",
-          published: true,
-        },
-        {
-          title: "Prisma on YouTube",
-          content: "https://pris.ly/youtube",
-        },
-      ],
-    },
+    slug: "awesome-site",
+    title: "かっこいいLPサイト",
+    description: "ReactとTailwindで構築したLPサイト",
+    imageUrl: "https://via.placeholder.com/600x400",
+    url: "https://example.com",
   },
   {
-    name: "Bob",
-    email: "bob@prisma.io",
-    posts: {
-      create: [
-        {
-          title: "Follow Prisma on Twitter",
-          content: "https://www.twitter.com/prisma",
-          published: true,
-        },
-      ],
-    },
+    slug: "shopify-ec",
+    title: "ShopifyアパレルECサイト",
+    description: "Liquidとカスタムアプリで構築したアパレルEC",
+    imageUrl: "https://via.placeholder.com/600x400",
+    url: "https://shop.example.com",
   },
 ];
 
 export async function main() {
-  for (const u of userData) {
-    await prisma.user.create({ data: u });
+  for (const work of userData) {
+    await prisma.work.create({ data: work });
   }
 }
 

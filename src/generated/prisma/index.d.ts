@@ -13,7 +13,11 @@ import $Result = runtime.Types.Result
 export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
-
+/**
+ * Model Work
+ * 
+ */
+export type Work = $Result.DefaultSelection<Prisma.$WorkPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -22,8 +26,8 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Works
+ * const works = await prisma.work.findMany()
  * ```
  *
  *
@@ -43,8 +47,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more Works
+   * const works = await prisma.work.findMany()
    * ```
    *
    *
@@ -140,7 +144,15 @@ export class PrismaClient<
     extArgs: ExtArgs
   }>>
 
-    
+      /**
+   * `prisma.work`: Exposes CRUD operations for the **Work** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Works
+    * const works = await prisma.work.findMany()
+    * ```
+    */
+  get work(): Prisma.WorkDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -581,7 +593,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
-
+    Work: 'Work'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -600,10 +612,85 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: never
+      modelProps: "work"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
-    model: {}
+    model: {
+      Work: {
+        payload: Prisma.$WorkPayload<ExtArgs>
+        fields: Prisma.WorkFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WorkFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WorkFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkPayload>
+          }
+          findFirst: {
+            args: Prisma.WorkFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WorkFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkPayload>
+          }
+          findMany: {
+            args: Prisma.WorkFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkPayload>[]
+          }
+          create: {
+            args: Prisma.WorkCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkPayload>
+          }
+          createMany: {
+            args: Prisma.WorkCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WorkCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkPayload>[]
+          }
+          delete: {
+            args: Prisma.WorkDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkPayload>
+          }
+          update: {
+            args: Prisma.WorkUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkPayload>
+          }
+          deleteMany: {
+            args: Prisma.WorkDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WorkUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.WorkUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkPayload>[]
+          }
+          upsert: {
+            args: Prisma.WorkUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkPayload>
+          }
+          aggregate: {
+            args: Prisma.WorkAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWork>
+          }
+          groupBy: {
+            args: Prisma.WorkGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WorkGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WorkCountArgs<ExtArgs>
+            result: $Utils.Optional<WorkCountAggregateOutputType> | number
+          }
+        }
+      }
+    }
   } & {
     other: {
       payload: any
@@ -686,7 +773,9 @@ export namespace Prisma {
      */
     omit?: Prisma.GlobalOmitConfig
   }
-  export type GlobalOmitConfig = {}
+  export type GlobalOmitConfig = {
+    work?: WorkOmit
+  }
 
   /* Types for Logging */
   export type LogLevel = 'info' | 'query' | 'warn' | 'error'
@@ -780,6 +869,1037 @@ export namespace Prisma {
    * Models
    */
 
+  /**
+   * Model Work
+   */
+
+  export type AggregateWork = {
+    _count: WorkCountAggregateOutputType | null
+    _min: WorkMinAggregateOutputType | null
+    _max: WorkMaxAggregateOutputType | null
+  }
+
+  export type WorkMinAggregateOutputType = {
+    id: string | null
+    slug: string | null
+    title: string | null
+    description: string | null
+    imageUrl: string | null
+    url: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type WorkMaxAggregateOutputType = {
+    id: string | null
+    slug: string | null
+    title: string | null
+    description: string | null
+    imageUrl: string | null
+    url: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type WorkCountAggregateOutputType = {
+    id: number
+    slug: number
+    title: number
+    description: number
+    imageUrl: number
+    url: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type WorkMinAggregateInputType = {
+    id?: true
+    slug?: true
+    title?: true
+    description?: true
+    imageUrl?: true
+    url?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type WorkMaxAggregateInputType = {
+    id?: true
+    slug?: true
+    title?: true
+    description?: true
+    imageUrl?: true
+    url?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type WorkCountAggregateInputType = {
+    id?: true
+    slug?: true
+    title?: true
+    description?: true
+    imageUrl?: true
+    url?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type WorkAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Work to aggregate.
+     */
+    where?: WorkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Works to fetch.
+     */
+    orderBy?: WorkOrderByWithRelationInput | WorkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WorkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Works from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Works.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Works
+    **/
+    _count?: true | WorkCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WorkMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WorkMaxAggregateInputType
+  }
+
+  export type GetWorkAggregateType<T extends WorkAggregateArgs> = {
+        [P in keyof T & keyof AggregateWork]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWork[P]>
+      : GetScalarType<T[P], AggregateWork[P]>
+  }
+
+
+
+
+  export type WorkGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WorkWhereInput
+    orderBy?: WorkOrderByWithAggregationInput | WorkOrderByWithAggregationInput[]
+    by: WorkScalarFieldEnum[] | WorkScalarFieldEnum
+    having?: WorkScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WorkCountAggregateInputType | true
+    _min?: WorkMinAggregateInputType
+    _max?: WorkMaxAggregateInputType
+  }
+
+  export type WorkGroupByOutputType = {
+    id: string
+    slug: string
+    title: string
+    description: string | null
+    imageUrl: string | null
+    url: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: WorkCountAggregateOutputType | null
+    _min: WorkMinAggregateOutputType | null
+    _max: WorkMaxAggregateOutputType | null
+  }
+
+  type GetWorkGroupByPayload<T extends WorkGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WorkGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WorkGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WorkGroupByOutputType[P]>
+            : GetScalarType<T[P], WorkGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WorkSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    title?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    url?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["work"]>
+
+  export type WorkSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    title?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    url?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["work"]>
+
+  export type WorkSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    title?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    url?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["work"]>
+
+  export type WorkSelectScalar = {
+    id?: boolean
+    slug?: boolean
+    title?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    url?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type WorkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "title" | "description" | "imageUrl" | "url" | "createdAt" | "updatedAt", ExtArgs["result"]["work"]>
+
+  export type $WorkPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Work"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      slug: string
+      title: string
+      description: string | null
+      imageUrl: string | null
+      url: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["work"]>
+    composites: {}
+  }
+
+  type WorkGetPayload<S extends boolean | null | undefined | WorkDefaultArgs> = $Result.GetResult<Prisma.$WorkPayload, S>
+
+  type WorkCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<WorkFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: WorkCountAggregateInputType | true
+    }
+
+  export interface WorkDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Work'], meta: { name: 'Work' } }
+    /**
+     * Find zero or one Work that matches the filter.
+     * @param {WorkFindUniqueArgs} args - Arguments to find a Work
+     * @example
+     * // Get one Work
+     * const work = await prisma.work.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WorkFindUniqueArgs>(args: SelectSubset<T, WorkFindUniqueArgs<ExtArgs>>): Prisma__WorkClient<$Result.GetResult<Prisma.$WorkPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Work that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {WorkFindUniqueOrThrowArgs} args - Arguments to find a Work
+     * @example
+     * // Get one Work
+     * const work = await prisma.work.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WorkFindUniqueOrThrowArgs>(args: SelectSubset<T, WorkFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WorkClient<$Result.GetResult<Prisma.$WorkPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Work that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WorkFindFirstArgs} args - Arguments to find a Work
+     * @example
+     * // Get one Work
+     * const work = await prisma.work.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WorkFindFirstArgs>(args?: SelectSubset<T, WorkFindFirstArgs<ExtArgs>>): Prisma__WorkClient<$Result.GetResult<Prisma.$WorkPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Work that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WorkFindFirstOrThrowArgs} args - Arguments to find a Work
+     * @example
+     * // Get one Work
+     * const work = await prisma.work.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WorkFindFirstOrThrowArgs>(args?: SelectSubset<T, WorkFindFirstOrThrowArgs<ExtArgs>>): Prisma__WorkClient<$Result.GetResult<Prisma.$WorkPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Works that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WorkFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Works
+     * const works = await prisma.work.findMany()
+     * 
+     * // Get first 10 Works
+     * const works = await prisma.work.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const workWithIdOnly = await prisma.work.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WorkFindManyArgs>(args?: SelectSubset<T, WorkFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Work.
+     * @param {WorkCreateArgs} args - Arguments to create a Work.
+     * @example
+     * // Create one Work
+     * const Work = await prisma.work.create({
+     *   data: {
+     *     // ... data to create a Work
+     *   }
+     * })
+     * 
+     */
+    create<T extends WorkCreateArgs>(args: SelectSubset<T, WorkCreateArgs<ExtArgs>>): Prisma__WorkClient<$Result.GetResult<Prisma.$WorkPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Works.
+     * @param {WorkCreateManyArgs} args - Arguments to create many Works.
+     * @example
+     * // Create many Works
+     * const work = await prisma.work.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WorkCreateManyArgs>(args?: SelectSubset<T, WorkCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Works and returns the data saved in the database.
+     * @param {WorkCreateManyAndReturnArgs} args - Arguments to create many Works.
+     * @example
+     * // Create many Works
+     * const work = await prisma.work.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Works and only return the `id`
+     * const workWithIdOnly = await prisma.work.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WorkCreateManyAndReturnArgs>(args?: SelectSubset<T, WorkCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Work.
+     * @param {WorkDeleteArgs} args - Arguments to delete one Work.
+     * @example
+     * // Delete one Work
+     * const Work = await prisma.work.delete({
+     *   where: {
+     *     // ... filter to delete one Work
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WorkDeleteArgs>(args: SelectSubset<T, WorkDeleteArgs<ExtArgs>>): Prisma__WorkClient<$Result.GetResult<Prisma.$WorkPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Work.
+     * @param {WorkUpdateArgs} args - Arguments to update one Work.
+     * @example
+     * // Update one Work
+     * const work = await prisma.work.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WorkUpdateArgs>(args: SelectSubset<T, WorkUpdateArgs<ExtArgs>>): Prisma__WorkClient<$Result.GetResult<Prisma.$WorkPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Works.
+     * @param {WorkDeleteManyArgs} args - Arguments to filter Works to delete.
+     * @example
+     * // Delete a few Works
+     * const { count } = await prisma.work.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WorkDeleteManyArgs>(args?: SelectSubset<T, WorkDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Works.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WorkUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Works
+     * const work = await prisma.work.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WorkUpdateManyArgs>(args: SelectSubset<T, WorkUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Works and returns the data updated in the database.
+     * @param {WorkUpdateManyAndReturnArgs} args - Arguments to update many Works.
+     * @example
+     * // Update many Works
+     * const work = await prisma.work.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Works and only return the `id`
+     * const workWithIdOnly = await prisma.work.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends WorkUpdateManyAndReturnArgs>(args: SelectSubset<T, WorkUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Work.
+     * @param {WorkUpsertArgs} args - Arguments to update or create a Work.
+     * @example
+     * // Update or create a Work
+     * const work = await prisma.work.upsert({
+     *   create: {
+     *     // ... data to create a Work
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Work we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WorkUpsertArgs>(args: SelectSubset<T, WorkUpsertArgs<ExtArgs>>): Prisma__WorkClient<$Result.GetResult<Prisma.$WorkPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Works.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WorkCountArgs} args - Arguments to filter Works to count.
+     * @example
+     * // Count the number of Works
+     * const count = await prisma.work.count({
+     *   where: {
+     *     // ... the filter for the Works we want to count
+     *   }
+     * })
+    **/
+    count<T extends WorkCountArgs>(
+      args?: Subset<T, WorkCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WorkCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Work.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WorkAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WorkAggregateArgs>(args: Subset<T, WorkAggregateArgs>): Prisma.PrismaPromise<GetWorkAggregateType<T>>
+
+    /**
+     * Group by Work.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WorkGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WorkGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WorkGroupByArgs['orderBy'] }
+        : { orderBy?: WorkGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WorkGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWorkGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Work model
+   */
+  readonly fields: WorkFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Work.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WorkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Work model
+   */
+  interface WorkFieldRefs {
+    readonly id: FieldRef<"Work", 'String'>
+    readonly slug: FieldRef<"Work", 'String'>
+    readonly title: FieldRef<"Work", 'String'>
+    readonly description: FieldRef<"Work", 'String'>
+    readonly imageUrl: FieldRef<"Work", 'String'>
+    readonly url: FieldRef<"Work", 'String'>
+    readonly createdAt: FieldRef<"Work", 'DateTime'>
+    readonly updatedAt: FieldRef<"Work", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Work findUnique
+   */
+  export type WorkFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Work
+     */
+    select?: WorkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Work
+     */
+    omit?: WorkOmit<ExtArgs> | null
+    /**
+     * Filter, which Work to fetch.
+     */
+    where: WorkWhereUniqueInput
+  }
+
+  /**
+   * Work findUniqueOrThrow
+   */
+  export type WorkFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Work
+     */
+    select?: WorkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Work
+     */
+    omit?: WorkOmit<ExtArgs> | null
+    /**
+     * Filter, which Work to fetch.
+     */
+    where: WorkWhereUniqueInput
+  }
+
+  /**
+   * Work findFirst
+   */
+  export type WorkFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Work
+     */
+    select?: WorkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Work
+     */
+    omit?: WorkOmit<ExtArgs> | null
+    /**
+     * Filter, which Work to fetch.
+     */
+    where?: WorkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Works to fetch.
+     */
+    orderBy?: WorkOrderByWithRelationInput | WorkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Works.
+     */
+    cursor?: WorkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Works from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Works.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Works.
+     */
+    distinct?: WorkScalarFieldEnum | WorkScalarFieldEnum[]
+  }
+
+  /**
+   * Work findFirstOrThrow
+   */
+  export type WorkFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Work
+     */
+    select?: WorkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Work
+     */
+    omit?: WorkOmit<ExtArgs> | null
+    /**
+     * Filter, which Work to fetch.
+     */
+    where?: WorkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Works to fetch.
+     */
+    orderBy?: WorkOrderByWithRelationInput | WorkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Works.
+     */
+    cursor?: WorkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Works from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Works.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Works.
+     */
+    distinct?: WorkScalarFieldEnum | WorkScalarFieldEnum[]
+  }
+
+  /**
+   * Work findMany
+   */
+  export type WorkFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Work
+     */
+    select?: WorkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Work
+     */
+    omit?: WorkOmit<ExtArgs> | null
+    /**
+     * Filter, which Works to fetch.
+     */
+    where?: WorkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Works to fetch.
+     */
+    orderBy?: WorkOrderByWithRelationInput | WorkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Works.
+     */
+    cursor?: WorkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Works from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Works.
+     */
+    skip?: number
+    distinct?: WorkScalarFieldEnum | WorkScalarFieldEnum[]
+  }
+
+  /**
+   * Work create
+   */
+  export type WorkCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Work
+     */
+    select?: WorkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Work
+     */
+    omit?: WorkOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Work.
+     */
+    data: XOR<WorkCreateInput, WorkUncheckedCreateInput>
+  }
+
+  /**
+   * Work createMany
+   */
+  export type WorkCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Works.
+     */
+    data: WorkCreateManyInput | WorkCreateManyInput[]
+  }
+
+  /**
+   * Work createManyAndReturn
+   */
+  export type WorkCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Work
+     */
+    select?: WorkSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Work
+     */
+    omit?: WorkOmit<ExtArgs> | null
+    /**
+     * The data used to create many Works.
+     */
+    data: WorkCreateManyInput | WorkCreateManyInput[]
+  }
+
+  /**
+   * Work update
+   */
+  export type WorkUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Work
+     */
+    select?: WorkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Work
+     */
+    omit?: WorkOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Work.
+     */
+    data: XOR<WorkUpdateInput, WorkUncheckedUpdateInput>
+    /**
+     * Choose, which Work to update.
+     */
+    where: WorkWhereUniqueInput
+  }
+
+  /**
+   * Work updateMany
+   */
+  export type WorkUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Works.
+     */
+    data: XOR<WorkUpdateManyMutationInput, WorkUncheckedUpdateManyInput>
+    /**
+     * Filter which Works to update
+     */
+    where?: WorkWhereInput
+    /**
+     * Limit how many Works to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Work updateManyAndReturn
+   */
+  export type WorkUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Work
+     */
+    select?: WorkSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Work
+     */
+    omit?: WorkOmit<ExtArgs> | null
+    /**
+     * The data used to update Works.
+     */
+    data: XOR<WorkUpdateManyMutationInput, WorkUncheckedUpdateManyInput>
+    /**
+     * Filter which Works to update
+     */
+    where?: WorkWhereInput
+    /**
+     * Limit how many Works to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Work upsert
+   */
+  export type WorkUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Work
+     */
+    select?: WorkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Work
+     */
+    omit?: WorkOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Work to update in case it exists.
+     */
+    where: WorkWhereUniqueInput
+    /**
+     * In case the Work found by the `where` argument doesn't exist, create a new Work with this data.
+     */
+    create: XOR<WorkCreateInput, WorkUncheckedCreateInput>
+    /**
+     * In case the Work was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WorkUpdateInput, WorkUncheckedUpdateInput>
+  }
+
+  /**
+   * Work delete
+   */
+  export type WorkDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Work
+     */
+    select?: WorkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Work
+     */
+    omit?: WorkOmit<ExtArgs> | null
+    /**
+     * Filter which Work to delete.
+     */
+    where: WorkWhereUniqueInput
+  }
+
+  /**
+   * Work deleteMany
+   */
+  export type WorkDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Works to delete
+     */
+    where?: WorkWhereInput
+    /**
+     * Limit how many Works to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Work without action
+   */
+  export type WorkDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Work
+     */
+    select?: WorkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Work
+     */
+    omit?: WorkOmit<ExtArgs> | null
+  }
+
 
   /**
    * Enums
@@ -792,11 +1912,454 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+  export const WorkScalarFieldEnum: {
+    id: 'id',
+    slug: 'slug',
+    title: 'title',
+    description: 'description',
+    imageUrl: 'imageUrl',
+    url: 'url',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type WorkScalarFieldEnum = (typeof WorkScalarFieldEnum)[keyof typeof WorkScalarFieldEnum]
+
+
+  export const SortOrder: {
+    asc: 'asc',
+    desc: 'desc'
+  };
+
+  export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  /**
+   * Field references
+   */
+
+
+  /**
+   * Reference to a field of type 'String'
+   */
+  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
   /**
    * Deep Input Types
    */
 
-  undefined
+
+  export type WorkWhereInput = {
+    AND?: WorkWhereInput | WorkWhereInput[]
+    OR?: WorkWhereInput[]
+    NOT?: WorkWhereInput | WorkWhereInput[]
+    id?: StringFilter<"Work"> | string
+    slug?: StringFilter<"Work"> | string
+    title?: StringFilter<"Work"> | string
+    description?: StringNullableFilter<"Work"> | string | null
+    imageUrl?: StringNullableFilter<"Work"> | string | null
+    url?: StringNullableFilter<"Work"> | string | null
+    createdAt?: DateTimeFilter<"Work"> | Date | string
+    updatedAt?: DateTimeFilter<"Work"> | Date | string
+  }
+
+  export type WorkOrderByWithRelationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    url?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WorkWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: WorkWhereInput | WorkWhereInput[]
+    OR?: WorkWhereInput[]
+    NOT?: WorkWhereInput | WorkWhereInput[]
+    title?: StringFilter<"Work"> | string
+    description?: StringNullableFilter<"Work"> | string | null
+    imageUrl?: StringNullableFilter<"Work"> | string | null
+    url?: StringNullableFilter<"Work"> | string | null
+    createdAt?: DateTimeFilter<"Work"> | Date | string
+    updatedAt?: DateTimeFilter<"Work"> | Date | string
+  }, "id" | "slug">
+
+  export type WorkOrderByWithAggregationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    url?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: WorkCountOrderByAggregateInput
+    _max?: WorkMaxOrderByAggregateInput
+    _min?: WorkMinOrderByAggregateInput
+  }
+
+  export type WorkScalarWhereWithAggregatesInput = {
+    AND?: WorkScalarWhereWithAggregatesInput | WorkScalarWhereWithAggregatesInput[]
+    OR?: WorkScalarWhereWithAggregatesInput[]
+    NOT?: WorkScalarWhereWithAggregatesInput | WorkScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Work"> | string
+    slug?: StringWithAggregatesFilter<"Work"> | string
+    title?: StringWithAggregatesFilter<"Work"> | string
+    description?: StringNullableWithAggregatesFilter<"Work"> | string | null
+    imageUrl?: StringNullableWithAggregatesFilter<"Work"> | string | null
+    url?: StringNullableWithAggregatesFilter<"Work"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Work"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Work"> | Date | string
+  }
+
+  export type WorkCreateInput = {
+    id?: string
+    slug: string
+    title: string
+    description?: string | null
+    imageUrl?: string | null
+    url?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type WorkUncheckedCreateInput = {
+    id?: string
+    slug: string
+    title: string
+    description?: string | null
+    imageUrl?: string | null
+    url?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type WorkUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WorkUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WorkCreateManyInput = {
+    id?: string
+    slug: string
+    title: string
+    description?: string | null
+    imageUrl?: string | null
+    url?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type WorkUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WorkUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type WorkCountOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WorkMaxOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WorkMinOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
 
 
 

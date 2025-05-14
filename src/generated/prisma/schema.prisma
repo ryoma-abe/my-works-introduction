@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -12,4 +6,15 @@ generator client {
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+model Work {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String // 実績タイトル
+  description String? // 説明文（省略可）
+  imageUrl    String? // サムネイル画像
+  url         String? // 外部リンク（公開サイトなど）
+  createdAt   DateTime @default(now()) // 作成日
+  updatedAt   DateTime @updatedAt // 自動更新日時
 }
