@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 z-50 w-full bg-black bg-opacity-80 backdrop-blur-md shadow-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="text-xl font-bold text-white">
           RyoCode
         </Link>
