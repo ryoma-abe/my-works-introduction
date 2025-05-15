@@ -9,10 +9,12 @@ export default function NewWork() {
 
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
+    const slug = formData.get("slug") as string;
     await prisma.work.create({
       data: {
         title,
         description,
+        slug,
       },
     });
     revalidatePath("/works");
@@ -32,6 +34,18 @@ export default function NewWork() {
             id="title"
             name="title"
             placeholder="Enter your post title"
+            className="w-full px-4 py-2 border rounded-lg"
+          />
+        </div>
+        <div>
+          <label htmlFor="slug" className="block text-lg mb-2">
+            slug
+          </label>
+          <input
+            type="text"
+            id="slug"
+            name="slug"
+            placeholder="Enter your post slug"
             className="w-full px-4 py-2 border rounded-lg"
           />
         </div>
