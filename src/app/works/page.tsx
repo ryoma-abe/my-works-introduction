@@ -11,7 +11,7 @@ export default async function Works() {
       <ol className="list-decimal list-inside font-[family-name:var(--font-geist-sans)]">
         {works.map((work) => (
           <li key={work.id} className="mb-2">
-            <Link href={`/work/${work.slug}`}>{work.title}</Link>
+            <Link href={`/works/${work.slug}`}>{work.title}</Link>
           </li>
         ))}
       </ol>
