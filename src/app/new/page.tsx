@@ -50,13 +50,13 @@ export default function NewWork() {
           />
         </div>
         <div>
-          <label htmlFor="content" className="block text-lg mb-2">
+          <label htmlFor="description" className="block text-lg mb-2">
             Content
           </label>
           <textarea
-            id="content"
-            name="content"
-            placeholder="Write your post content here..."
+            id="description"
+            name="description"
+            placeholder="Write your post description here..."
             rows={6}
             className="w-full px-4 py-2 border rounded-lg"
           />
