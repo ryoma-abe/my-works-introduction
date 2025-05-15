@@ -1,26 +1,24 @@
+// app/page.tsx (Home)
 import prisma from "@/lib/prisma";
-import Image from "next/image";
-import Link from "next/link";
+import WorkCard from "./components/works/WorkCard";
 
 export default async function Home() {
   const works = await prisma.work.findMany();
+
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center -mt-16">
-      <ul>
+    <main className="min-h-screen bg-black py-20">
+      <ul className="grid w-full gap-4 px-4 sm:grid-cols-2 lg:grid-cols-3">
         {works.map((work) => (
-          <li key={work.id} className="mb-2">
-            <Link href={`/works/${work.slug}`}>
-              <Image
-                src={work.imageUrl}
-                width={600}
-                height={400}
-                alt={work.title}
-              />
-              <h3>{work.title}</h3>
-            </Link>
-          </li>
+          <WorkCard
+            key={work.id}
+            slug={work.slug}
+            imageUrl={work.imageUrl}
+            title={work.title}
+            url={work.url}
+            description={work.description}
+          />
         ))}
       </ul>
-    </div>
+    </main>
   );
 }
