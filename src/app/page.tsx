@@ -5,10 +5,10 @@ import Link from "next/link";
 export default async function Home() {
   const works = await prisma.work.findMany();
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center -mt-16">
-      <ul>
+    <div className="min-h-screen bg-gray-50 container mx-auto">
+      <ul className="grid grid-cols-3 gap-2 mt-16">
         {works.map((work) => (
-          <li key={work.id} className="mb-2">
+          <li key={work.id} className="p-4">
             <Link href={`/works/${work.slug}`}>
               {work.imageUrl && (
                 <Image
