@@ -10,12 +10,14 @@ export default async function Home() {
         {works.map((work) => (
           <li key={work.id} className="mb-2">
             <Link href={`/works/${work.slug}`}>
-              <Image
-                src={work.imageUrl}
-                width={600}
-                height={400}
-                alt={work.title}
-              />
+              {work.imageUrl && (
+                <Image
+                  src={work.imageUrl}
+                  width={600}
+                  height={400}
+                  alt={work.title}
+                />
+              )}
               <h3>{work.title}</h3>
             </Link>
           </li>
