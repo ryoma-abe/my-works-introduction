@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import Link from "next/link";
 
 export default async function Works() {
   const works = await prisma.work.findMany();
@@ -10,7 +11,7 @@ export default async function Works() {
       <ol className="list-decimal list-inside font-[family-name:var(--font-geist-sans)]">
         {works.map((work) => (
           <li key={work.id} className="mb-2">
-            {work.title}
+            <Link href={`/works/${work.slug}`}>{work.title}</Link>
           </li>
         ))}
       </ol>

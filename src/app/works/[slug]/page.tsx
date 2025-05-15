@@ -4,11 +4,11 @@ import { notFound } from "next/navigation";
 export default async function Work({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { id } = await params;
+  const { slug } = await params;
   const work = await prisma.work.findUnique({
-    where: { id },
+    where: { slug },
   });
 
   if (!work) {
