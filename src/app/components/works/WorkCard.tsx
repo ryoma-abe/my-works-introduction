@@ -30,7 +30,7 @@ export default function WorkCard({
         )}
         <div className="flex flex-col gap-3 mt-3">
           <h3 className="text-md font-semibold text-white">{title}</h3>
-          <p>{description}</p>
+          <p className="text-white">{description}</p>
         </div>
       </Link>
     </li>
