@@ -10,7 +10,12 @@ type Props = {
   description: string | null;
 };
 
-export default function WorkCard({ slug, imageUrl, title }: Props) {
+export default function WorkCard({
+  slug,
+  imageUrl,
+  title,
+  description,
+}: Props) {
   return (
     <li>
       <Link href={`/works/${slug}`} className="p-4 block">
@@ -25,6 +30,7 @@ export default function WorkCard({ slug, imageUrl, title }: Props) {
         )}
         <div className="flex flex-col gap-3 mt-3">
           <h3 className="text-md font-semibold text-white">{title}</h3>
+          <p>{description}</p>
         </div>
       </Link>
     </li>
