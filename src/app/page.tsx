@@ -15,6 +15,7 @@ export default async function Home() {
             imageUrl={work.imageUrl}
             title={work.title}
             url={work.url}
+            description={work.description}
           />
         ))}
       </ul>

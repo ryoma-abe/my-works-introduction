@@ -7,6 +7,7 @@ type Props = {
   imageUrl: string | null;
   title: string;
   url: string | null;
+  description: string | null;
 };
 
 export default function WorkCard({ slug, imageUrl, title }: Props) {
