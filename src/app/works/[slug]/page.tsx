@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -17,12 +18,21 @@ export default async function Work({
   }
 
   return (
-    <article className="max-w-2xl space-y-4 font-[family-name:var(--font-geist-sans)]">
+    <article className="max-w-5xl space-y-4 mx-auto">
       <h2 className="text-4xl font-bold mb-8 text-white">{work.title}</h2>
       {work.url && (
         <Link href={work.url} className="text-blue-200">
           {work.url}
         </Link>
+      )}
+      {work.imageUrl && (
+        <Image
+          className="object-cover w-full"
+          src={work.imageUrl}
+          width={600}
+          height={400}
+          alt={work.title}
+        />
       )}
       <div className="prose prose-gray mt-8">
         <p className="text-white">
