@@ -46,6 +46,7 @@ export default async function Work({
           {work.description || "コンテンツはありません"}
         </p>
       </div>
+      <Link href="/works">← 制作実績一覧に戻る</Link>
     </article>
   );
 }
