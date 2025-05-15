@@ -1,11 +1,22 @@
+import prisma from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
 import Form from "next/form";
+import { redirect } from "next/navigation";
 
 export default function NewWork() {
   async function createWork(formData: FormData) {
     "use server";
 
     const title = formData.get("title") as string;
-    const content = formData.get("content") as string;
+    const description = formData.get("description") as string;
+    await prisma.work.create({
+      data: {
+        title,
+        description,
+      },
+    });
+    revalidatePath("/works");
+    redirect("/works");
   }
 
   return (
