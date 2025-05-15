@@ -2,6 +2,7 @@ import prisma from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ExternalLink } from "lucide-react";
 
 export default async function Work({
   params,
@@ -21,8 +22,14 @@ export default async function Work({
     <article className="max-w-5xl space-y-4 mx-auto">
       <h2 className="text-4xl font-bold mb-8 text-white">{work.title}</h2>
       {work.url && (
-        <Link href={work.url} className="text-blue-200">
+        <Link
+          href={work.url}
+          className="inline-flex items-center gap-1 text-blue-200 hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {work.url}
+          <ExternalLink size={16} />
         </Link>
       )}
       {work.imageUrl && (
