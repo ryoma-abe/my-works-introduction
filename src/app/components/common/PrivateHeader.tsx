@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
-export default function Header() {
+export default function PrivateHeader() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
