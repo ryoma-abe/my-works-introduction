@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function DashboardPage() {
-  return <div>編集</div>;
+  return (
+    <div>
+      <p>これはログイン専用画面です</p>
+    </div>
+  );
 }
