@@ -1,6 +1,6 @@
 // app/page.tsx (Home)
 import prisma from "@/lib/prisma";
-import WorkCard from "./components/works/WorkCard";
+import WorkCard from "@/app/components/works/WorkCard";
 
 export default async function Home() {
   const works = await prisma.work.findMany();
