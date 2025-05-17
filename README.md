@@ -6,6 +6,6 @@
 
 ログインなしでもみれる
 
-## (private)
+## dashboard
 
 ログイン後
