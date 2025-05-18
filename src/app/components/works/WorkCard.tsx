@@ -1,21 +1,14 @@
 // components/WorkCard.tsx
+import { WorksProps } from "@/types/WorksProps";
 import Image from "next/image";
 import Link from "next/link";
-
-type Props = {
-  slug: string;
-  imageUrl: string | null;
-  title: string;
-  url: string | null;
-  description: string | null;
-};
 
 export default function WorkCard({
   slug,
   imageUrl,
   title,
   description,
-}: Props) {
+}: WorksProps) {
   const truncate = (text: string, limit = 30) =>
     text.length > limit ? `${text.slice(0, limit)}…` : text;
   return (
