@@ -9,7 +9,7 @@ type Props = {
 export default function DashboardClient({ works }: Props) {
   const [menuOpenId, setMenuOpenId] = useState<string | null>(null);
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
+    <div>
       <ul className="space-y-4">
         {works.map((work) => (
           <li key={work.id} className="border rounded px-4 py-3">
