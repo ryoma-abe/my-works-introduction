@@ -38,21 +38,21 @@ export default function DashboardClient({ works }: Props) {
                   ⋯
                 </button>
                 <div
-                  className={`absolute right-0 mt-2 w-40 border rounded shadow ${
+                  className={`absolute right-0 mt-2 w-64 border rounded bg-black z-40 ${
                     menuOpenId !== work.id ? "hidden" : ""
                   }`}
                 >
-                  <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+                  <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-600">
                     編集
                   </button>
-                  <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+                  <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-600">
                     複製
                   </button>
-                  <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+                  <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-600">
                     共有用リンクをコピー
                   </button>
                   <div className="border-t my-1" />
-                  <button className="block w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-100">
+                  <button className="block w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-600">
                     削除
                   </button>
                 </div>
