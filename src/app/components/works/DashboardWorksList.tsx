@@ -1,6 +1,6 @@
 "use client";
 import { Work } from "@/generated/prisma/client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Props = {
   works: Work[];
@@ -8,6 +8,17 @@ type Props = {
 
 export default function DashboardClient({ works }: Props) {
   const [menuOpenId, setMenuOpenId] = useState<string | null>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpenId(null);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   return (
     <div>
       <ul className="space-y-4">
@@ -38,6 +49,7 @@ export default function DashboardClient({ works }: Props) {
                   ⋯
                 </button>
                 <div
+                  ref={menuOpenId === work.id ? menuRef : null}
                   className={`absolute right-0 mt-2 w-64 border rounded bg-black z-40 ${
                     menuOpenId !== work.id ? "hidden" : ""
                   }`}
