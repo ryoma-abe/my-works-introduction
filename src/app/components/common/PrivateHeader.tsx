@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { SignOut } from "../SignOut";
 
 export default function PrivateHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +30,7 @@ export default function PrivateHeader() {
           <Link href="/contact" className="hover:text-indigo-400">
             お問い合わせ
           </Link>
+          <SignOut />
         </nav>
 
         <button
